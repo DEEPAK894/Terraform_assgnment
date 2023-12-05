@@ -2,25 +2,28 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION = 'us-east-2' // Set your AWS region
+        AWS_DEFAULT_REGION = 'us-east-2'
     }
 
     stages {
-        stage('Terraform Init') {
+        stage('Checkout') {
             steps {
-                script {
-                    withAWS(region: AWS_REGION, credentials: 'aws') {
-                        sh 'terraform init'
-                    }
-                }
+                checkout scm
             }
         }
 
-        stage('Terraform Plan') {
+        stage('Terraform Init') {
             steps {
                 script {
-                    withAWS(region: AWS_REGION, credentials: 'aws') { 
-                        sh 'terraform plan'
+                    // Use withCredentials to securely pass AWS credentials
+                    withCredentials([[
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        accessKeyVariable: 'AKIATK6MJJCYYMADR2GU',
+                        secretKeyVariable: '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',
+                        credentialsId: 'Terraform_new'
+                    ]]) {
+                        // Initialize Terraform with AWS provider credentials
+                        sh 'terraform init'
                     }
                 }
             }
@@ -29,8 +32,34 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 script {
-                    withAWS(region: AWS_REGION, credentials: 'aws') {
+                    // Use withCredentials to securely pass AWS credentials
+                    withCredentials([[
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        accessKeyVariable: 'AKIATK6MJJCYYMADR2GU',
+                        secretKeyVariable: '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',
+                        credentialsId: 'Terraform'
+                    ]]) {
+                        // Run Terraform apply
                         sh 'terraform apply -auto-approve'
+                    }
+                }
+            }
+        }
+
+        // ... (other stages)
+
+        stage('Terraform Destroy') {
+            steps {
+                script {
+                    // Use withCredentials to securely pass AWS credentials
+                    withCredentials([[
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        accessKeyVariable: 'AKIATK6MJJCYYMADR2GU',
+                        secretKeyVariable: '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',
+                        credentialsId: 'Terraform'
+                    ]]) {
+                        // Destroy Terraform resources
+                        sh 'terraform destroy -auto-approve'
                     }
                 }
             }
