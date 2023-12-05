@@ -5,6 +5,13 @@ pipeline {
         AWS_DEFAULT_REGION = 'us-east-2'
     }
 
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Terraform Init') {
             steps {
                 script {
@@ -20,7 +27,7 @@ pipeline {
                     }
                 }
             }
-        
+        }
 
         stage('Terraform Apply') {
             steps {
