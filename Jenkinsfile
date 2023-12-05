@@ -5,13 +5,6 @@ pipeline {
         AWS_DEFAULT_REGION = 'us-east-2'
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Terraform Init') {
             steps {
                 script {
@@ -37,7 +30,7 @@ pipeline {
                         $class: 'AmazonWebServicesCredentialsBinding',
                         accessKeyVariable: 'AKIATK6MJJCYYMADR2GU',
                         secretKeyVariable: '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',
-                        credentialsId: 'Terraform'
+                        credentialsId: 'Terraform_new'
                     ]]) {
                         // Run Terraform apply
                         sh 'terraform apply -auto-approve'
