@@ -20,7 +20,7 @@ pipeline {
                     }
                 }
             }
-        }
+        
 
         stage('Terraform Apply') {
             steps {
@@ -49,7 +49,7 @@ pipeline {
                         $class: 'AmazonWebServicesCredentialsBinding',
                         accessKeyVariable: 'AKIATK6MJJCYYMADR2GU',
                         secretKeyVariable: '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',
-                        credentialsId: 'Terraform'
+                        credentialsId: 'Terraform_new'
                     ]]) {
                         // Destroy Terraform resources
                         sh 'terraform destroy -auto-approve'
