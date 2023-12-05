@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_DEFAULT_REGION = 'us-east-1'
+        AWS_DEFAULT_REGION = 'us-east-2'
     }
 
     stages {
@@ -18,8 +18,8 @@ pipeline {
                     // Use withCredentials to securely pass AWS credentials
                     withCredentials([[
                         $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AKIAUBHJPDFRRHRS2MNH',
-                        secretKeyVariable: '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',
+                        accessKeyVariable: 'AKIATK6MJJCYYMADR2GU',
+                        secretKeyVariable: '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',
                         credentialsId: 'Terraform'
                     ]]) {
                         // Initialize Terraform with AWS provider credentials
@@ -35,8 +35,8 @@ pipeline {
                     // Use withCredentials to securely pass AWS credentials
                     withCredentials([[
                         $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AKIAUBHJPDFRRHRS2MNH',
-                        secretKeyVariable: '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',
+                        accessKeyVariable: 'AKIATK6MJJCYYMADR2GU',
+                        secretKeyVariable: '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',
                         credentialsId: 'Terraform'
                     ]]) {
                         // Run Terraform apply
@@ -54,8 +54,8 @@ pipeline {
                     // Use withCredentials to securely pass AWS credentials
                     withCredentials([[
                         $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AKIAUBHJPDFRRHRS2MNH',
-                        secretKeyVariable: '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',
+                        accessKeyVariable: 'AKIATK6MJJCYYMADR2GU',
+                        secretKeyVariable: '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',
                         credentialsId: 'Terraform'
                     ]]) {
                         // Destroy Terraform resources
