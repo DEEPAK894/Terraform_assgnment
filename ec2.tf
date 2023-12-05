@@ -1,13 +1,13 @@
 # ec2.tf
 
 provider "aws" {
-  region = "us-east-1" # Update with your desired region
+  region = "us-east-2" # Update with your desired region
   //profile = "default"
-  access_key = "AKIAUBHJPDFRRHRS2MNH"
-   secret_key = "ibOpnr76zrDeR/1tOVcof45yJAixQHCAG+WeNuCz"
+  access_key = "AKIATK6MJJCYYMADR2GU"
+   secret_key = "TEU3YJUSm3eTCexT5+eR072oIm19nLQazxlgW5dA"
 }
 resource "aws_instance" "public_instance" {
-  ami                    = "ami-0230bd60aa48260c6" # Replace with your AMI ID
+  ami                    = "ami-06d4b7182ac3480fa" # Replace with your AMI ID
   instance_type          = "t2.micro"     # Adjust instance type as needed
   subnet_id              = aws_subnet.public_subnet.id
   vpc_security_group_ids = [aws_security_group.sg.id]
@@ -36,7 +36,7 @@ resource "aws_instance" "public_instance" {
 }
 
 resource "aws_instance" "private_instance" {
-  ami                    = "ami-0230bd60aa48260c6" # Replace with your AMI ID
+  ami                    = "ami-06d4b7182ac3480fa" # Replace with your AMI ID
   instance_type          = "t2.micro"     # Adjust instance type as needed
   subnet_id              = aws_subnet.private_subnet.id
   vpc_security_group_ids = [aws_security_group.sg.id]
