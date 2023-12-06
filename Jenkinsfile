@@ -39,7 +39,7 @@ pipeline {
                         credentialsId: 'aws'
                     ]]) {
                         // Run Terraform apply
-                        sh 'terraform plan -auto-approve'
+                        sh 'terraform plan '
                     }
                 }
             }
