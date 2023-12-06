@@ -28,6 +28,22 @@ pipeline {
                 }
             }
         }
+        stage('Terraform plan') {
+            steps {
+                script {
+                    // Use withCredentials to securely pass AWS credentials
+                    withCredentials([[
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        accessKeyVariable: 'AKIATK6MJJCYZNG3RFGS',
+                        secretKeyVariable: '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',
+                        credentialsId: 'aws'
+                    ]]) {
+                        // Run Terraform apply
+                        sh 'terraform plan -auto-approve'
+                    }
+                }
+            }
+        }
 
         stage('Terraform Apply') {
             steps {
