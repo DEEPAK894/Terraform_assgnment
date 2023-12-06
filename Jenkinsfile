@@ -9,9 +9,9 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    withAWS(region: AWS_REGION, credentials: 'aws') {
+                     
                         sh 'terraform init'
-                    }
+                    
                 }
             }
         }
@@ -19,9 +19,9 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    withAWS(region: AWS_REGION, credentials: 'aws') { 
+                    
                         sh 'terraform plan'
-                    }
+                    
                 }
             }
         }
@@ -29,9 +29,9 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 script {
-                    withAWS(region: AWS_REGION, credentials: 'aws') {
+
                         sh 'terraform apply -auto-approve'
-                    }
+                    
                 }
             }
         }
