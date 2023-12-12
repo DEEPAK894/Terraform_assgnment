@@ -18,8 +18,8 @@ pipeline {
                     // Use withCredentials to securely pass AWS credentials
                     withCredentials([[
                         $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AKIATK6MJJCYZNG3RFGS',
-                        secretKeyVariable: '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',
+                        accessKeyVariable: 'AKIATK6MJJCY6E3DHHMN',
+                        secretKeyVariable: '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',
                         credentialsId: 'aws'
                     ]]) {
                         // Initialize Terraform with AWS provider credentials
@@ -34,8 +34,8 @@ pipeline {
                     // Use withCredentials to securely pass AWS credentials
                     withCredentials([[
                         $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AKIATK6MJJCYZNG3RFGS',
-                        secretKeyVariable: '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',
+                        accessKeyVariable: 'AKIATK6MJJCY6E3DHHMN',
+                        secretKeyVariable: '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',
                         credentialsId: 'aws'
                     ]]) {
                         // Run Terraform apply
@@ -51,8 +51,8 @@ pipeline {
                     // Use withCredentials to securely pass AWS credentials
                     withCredentials([[
                         $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AKIATK6MJJCYZNG3RFGS',
-                        secretKeyVariable: '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',
+                        accessKeyVariable: 'AKIATK6MJJCY6E3DHHMN',
+                        secretKeyVariable: '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',
                         credentialsId: 'aws'
                     ]]) {
                         // Run Terraform apply
@@ -70,8 +70,8 @@ pipeline {
                     // Use withCredentials to securely pass AWS credentials
                     withCredentials([[
                         $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AKIATK6MJJCYZNG3RFGS',
-                        secretKeyVariable: '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',
+                        accessKeyVariable: 'AKIATK6MJJCY6E3DHHMN',
+                        secretKeyVariable: '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',
                         credentialsId: 'aws'
                     ]]) {
                         // Destroy Terraform resources
