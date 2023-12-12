@@ -17,9 +17,6 @@ pipeline {
                 script {
                     // Use withCredentials to securely pass AWS credentials
                     withCredentials([[
-                        $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AKIATK6MJJCY6E3DHHMN',
-                        secretKeyVariable: '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',
                         credentialsId: 'aws'
                     ]]) {
                         // Initialize Terraform with AWS provider credentials
@@ -33,9 +30,6 @@ pipeline {
                 script {
                     // Use withCredentials to securely pass AWS credentials
                     withCredentials([[
-                        $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AKIATK6MJJCY6E3DHHMN',
-                        secretKeyVariable: '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',
                         credentialsId: 'aws'
                     ]]) {
                         // Run Terraform apply
@@ -50,9 +44,6 @@ pipeline {
                 script {
                     // Use withCredentials to securely pass AWS credentials
                     withCredentials([[
-                        $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AKIATK6MJJCY6E3DHHMN',
-                        secretKeyVariable: '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',
                         credentialsId: 'aws'
                     ]]) {
                         // Run Terraform apply
@@ -69,9 +60,6 @@ pipeline {
                 script {
                     // Use withCredentials to securely pass AWS credentials
                     withCredentials([[
-                        $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AKIATK6MJJCY6E3DHHMN',
-                        secretKeyVariable: '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',
                         credentialsId: 'aws'
                     ]]) {
                         // Destroy Terraform resources
