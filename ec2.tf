@@ -2,10 +2,9 @@
 
 provider "aws" {
   region = "us-east-1" # Update with your desired region
-  //profile = "default"
 }
 resource "aws_instance" "public_instance" {
-  ami                    = "ami-0230bd60aa48260c6" # Replace with your AMI ID
+  ami                    = "ami-07f3398be63869145" # Replace with your AMI ID
   instance_type          = "t2.micro"     # Adjust instance type as needed
   subnet_id              = aws_subnet.public_subnet.id
   vpc_security_group_ids = [aws_security_group.sg.id]
@@ -18,7 +17,7 @@ resource "aws_instance" "public_instance" {
   }
   provisioner "remote-exec" {
     inline = [
-      "sudo yum install -y nginx",  # Correct package name
+      "sudo apt install -y nginx",  # Correct package name
       "sudo service nginx start",
       "sudo echo '${tls_private_key.ssh_key.private_key_pem}' > /home/ec2-user/private_key.pem",
       "sudo chmod 400 /home/ec2-user/private_key.pem"  # Start NGINX service
@@ -34,7 +33,7 @@ resource "aws_instance" "public_instance" {
 }
 
 resource "aws_instance" "private_instance" {
-  ami                    = "ami-0230bd60aa48260c6" # Replace with your AMI ID
+  ami                    = "ami-07f3398be63869145" # Replace with your AMI ID
   instance_type          = "t2.micro"     # Adjust instance type as needed
   subnet_id              = aws_subnet.private_subnet.id
   vpc_security_group_ids = [aws_security_group.sg.id]
